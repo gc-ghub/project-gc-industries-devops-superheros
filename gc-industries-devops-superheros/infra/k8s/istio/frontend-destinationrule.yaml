@@ -1,10 +1,10 @@
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
-  name: catalog
+  name: frontend
   namespace: superheros
 spec:
-  host: catalog.superheros.svc.cluster.local
+  host: frontend.superheros.svc.cluster.local
   subsets:
   - name: v1
     labels:

@@ -1,25 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catalog-v2
+  name: frontend-v2
   namespace: superheros
-  labels:
-    app: catalog
-    version: v2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: catalog
+      app: frontend
       version: v2
   template:
     metadata:
       labels:
-        app: catalog
+        app: frontend
         version: v2
     spec:
       containers:
-      - name: catalog
-        image: dockergc00/superheros-catalog:v2
+      - name: frontend
+        image: dockergc00/superheros-frontend:v2
         ports:
-        - containerPort: 8080
+        - containerPort: 80

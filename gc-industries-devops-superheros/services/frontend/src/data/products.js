@@ -1,9 +1,9 @@
 const products = [
   {
     id: 1,
-    name: "Optimus Prime – Expert Terraformer",
+    name: "SuperMan – All-in-One DevOps Hero",
     price: 5000000,
-    image: "/images/Optimus_Prime_Terraform.jpg",
+    image: "/images/SuperMan_All_in_one.jpg",
     animDelay: 0,
   },
   {

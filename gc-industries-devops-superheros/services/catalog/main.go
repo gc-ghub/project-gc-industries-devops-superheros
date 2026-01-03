@@ -18,8 +18,9 @@ func main() {
 
 	app.Get("/ping", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
-			"message": "catalog service is alive",
-			"version": "v1",
+			"message": "catalog service is alive - CANARY",
+			"version": "v2",
+			"color":   "blue",
 		})
 	})
 

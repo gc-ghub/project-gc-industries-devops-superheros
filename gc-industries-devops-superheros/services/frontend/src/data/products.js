@@ -1,9 +1,9 @@
 const products = [
   {
     id: 1,
-    name: "SuperMan – All-in-One DevOps Hero",
+    name: "Wonder Woman – Does Wonders with Terraform",
     price: 5000000,
-    image: "/images/SuperMan_All_in_one.jpg",
+    image: "/images/WonderWoman_Terraform.jpg",
     animDelay: 0,
   },
   {
@@ -15,9 +15,9 @@ const products = [
   },
   {
     id: 3,
-    name: "Iron Man – AI-Powered AWS Cloud Guru",
+    name: "Aqua Man – Docker Containerization Expert",
     price: 2200000,
-    image: "/images/IronMan_AWS_AI.jpg",
+    image: "/images/AquaMan_Docker.jpg",
     animDelay: 200,
   },
   {
@@ -36,9 +36,9 @@ const products = [
   },
   {
     id: 6,
-    name: "Batman – Dark Knight Cloud Cost Optimizer",
+    name: "Flash – Lightning-Fast Build and Release Hero",
     price: 6500000,
-    image: "/images/Batman_Cost_Optimizer_night.jpg",
+    image: "/images/Flash_Build_and_release.jpg",
     animDelay: 500,
   }
 ];

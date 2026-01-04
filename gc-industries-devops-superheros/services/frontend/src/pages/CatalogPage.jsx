@@ -13,8 +13,8 @@ export default function CatalogPage() {
   return (
     <section className="centered-page catalog">
 
-      <h1 className="page-title">🛒 Our carefully crafted Product Catalog</h1>
-      <p className="page-sub">Pick your SuperHero. New recruits coming soon…</p>
+      <h1 className="page-title">🛒 Our Carefully Crafted Product Catalog</h1>
+      <p className="page-sub">Pick your SuperHeros. New recruits coming soon…</p>
 
       {/* NEW — Two-row cinematic grid */}
       <div className="product-grid cinematic-grid">

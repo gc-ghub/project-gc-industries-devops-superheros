@@ -21,14 +21,18 @@ export default function HomePage() {
         <div className="home-tile home-center-tile">
           <h1>DevOps SuperHero Shop</h1>
           <p className="home-description">
-            Shop your SuperHero's today to build a strong DevOps Team.  
-            Our SuperHeros are experienced with Terraform, Kubernetes, Istio, AWS,  
-            GitHub Actions, Docker and more.
+            Shop your SuperHeros today to build a strong DevOps Team.  
+            Our SuperHeros are experienced with Terraform, Ansible, Docker, Kubernetes, Istio, AWS Cloud,  
+            GitHub Actions, Jenkins, ArgoCD and more.
           </p>
 
           <div className="home-btn-row">
-            <Link to="/" className="primary-btn">🏠 Home</Link>
-            <Link to="/catalog" className="primary-btn">🛒 Catalog</Link>
+            <Link to="/" className="nav-btn active" style={{minWidth:120, display:'inline-flex', alignItems:'center', justifyContent:'center', gap:6}}>
+              <span role="img" aria-label="home">🏠</span> Home
+            </Link>
+            <Link to="/catalog" className="nav-btn" style={{minWidth:120, display:'inline-flex', alignItems:'center', justifyContent:'center', gap:6}}>
+              <span role="img" aria-label="catalog">🛒</span> Catalog
+            </Link>
           </div>
         </div>
 

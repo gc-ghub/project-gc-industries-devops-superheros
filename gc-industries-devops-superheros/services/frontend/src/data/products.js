@@ -29,9 +29,9 @@ const products = [
   },
   {
     id: 5,
-    name: "Bumblebee – Silent but Deadly Ansible Specialist",
+    name: "Logan – Advanced Kubernetes Superhero with Healing Powers",
     price: 1800000,
-    image: "/images/Bumblebee_Ansible.jpg",
+    image: "/images/Logan_K8s.jpg",
     animDelay: 400,
   },
   {

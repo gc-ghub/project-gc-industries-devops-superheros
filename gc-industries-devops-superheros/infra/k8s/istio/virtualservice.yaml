@@ -1,4 +1,4 @@
-apiVersion: networking.istio.io/v1
+apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: superheros-routing
@@ -9,13 +9,12 @@ spec:
   gateways:
   - superheros-gateway
   http:
-
   - match:
     - uri:
         prefix: /api/catalog
     route:
     - destination:
-        host: catalog.superheros.svc.cluster.local
+        host: catalog
         port:
           number: 8081
 
@@ -24,7 +23,7 @@ spec:
         prefix: /api/orders
     route:
     - destination:
-        host: orders.superheros.svc.cluster.local
+        host: orders
         port:
           number: 8082
 
@@ -33,7 +32,7 @@ spec:
         prefix: /api/inventory
     route:
     - destination:
-        host: inventory.superheros.svc.cluster.local
+        host: inventory
         port:
           number: 8083
 
@@ -42,7 +41,7 @@ spec:
         prefix: /api/payment
     route:
     - destination:
-        host: payment.superheros.svc.cluster.local
+        host: payment
         port:
           number: 8084
 
@@ -51,6 +50,6 @@ spec:
         prefix: /
     route:
     - destination:
-        host: frontend.superheros.svc.cluster.local
+        host: frontend
         port:
           number: 80

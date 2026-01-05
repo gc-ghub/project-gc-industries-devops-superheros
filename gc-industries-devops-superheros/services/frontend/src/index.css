@@ -474,3 +474,15 @@ body{
 .order-btn:hover {
   opacity: 0.9;
 }
+
+
+
+
+
+
+.product-rating {
+  margin-top: 6px;
+  color: #ffd700;
+  font-weight: 600;
+  font-size: 0.95rem;
+}

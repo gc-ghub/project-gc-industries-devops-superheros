@@ -1,13 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: catalog
+  name: catalog-v1
   namespace: superheros
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: catalog
+      version: v1
   template:
     metadata:
       labels:
@@ -20,6 +21,9 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
+          env:
+            - name: CATALOG_VERSION
+              value: "v1"
           readinessProbe:
             httpGet:
               path: /health

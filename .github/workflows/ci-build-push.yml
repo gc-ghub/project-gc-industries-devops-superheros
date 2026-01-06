@@ -1,82 +1,80 @@
-name: CI - Build & Push Images
+name: CI - Build & Push Docker Images
 
 on:
   push:
     branches:
       - main
     paths:
-      - "services/**"
-      - ".github/workflows/ci-build-push.yml"
-
-env:
-  REGISTRY: docker.io
-  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      - gc-industries-devops-superheros/services/**
+      - .github/workflows/ci-build-push.yml
 
 jobs:
   build-and-push:
-    name: Build & Push Images
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: gc-industries-devops-superheros
 
     strategy:
       fail-fast: false
       matrix:
         include:
-          # ---------- Frontend ----------
+          # -------- Frontend --------
           - service: frontend
             context: services/frontend
             dockerfile: services/frontend/Dockerfile
             image: superheros-frontend
-            tag: v1
+            version: v1
 
-          # ---------- Inventory ----------
+          # -------- Inventory --------
           - service: inventory
             context: services/inventory
             dockerfile: services/inventory/Dockerfile
             image: superheros-inventory
-            tag: v1
+            version: v1
 
-          # ---------- Orders ----------
+          # -------- Orders --------
           - service: orders
             context: services/orders
             dockerfile: services/orders/Dockerfile
             image: superheros-orders
-            tag: v1
+            version: v1
 
-          # ---------- Payment ----------
+          # -------- Payment --------
           - service: payment
             context: services/payment
             dockerfile: services/payment/Dockerfile
             image: superheros-payment
-            tag: v1
+            version: v1
 
-          # ---------- Catalog v1 ----------
+          # -------- Catalog v1 --------
           - service: catalog
             context: services/catalog
             dockerfile: services/catalog/Dockerfile
             image: superheros-catalog
-            tag: v1
+            version: v1
 
-          # ---------- Catalog v2 ----------
+          # -------- Catalog v2 --------
           - service: catalog
             context: services/catalog
             dockerfile: services/catalog/Dockerfile
             image: superheros-catalog
-            tag: v2
+            version: v2
 
-          # ---------- Catalog v3 ----------
+          # -------- Catalog v3 --------
           - service: catalog
             context: services/catalog
             dockerfile: services/catalog/Dockerfile
             image: superheros-catalog
-            tag: v3
+            version: v3
 
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
 
       - name: Set short Git SHA
-        id: vars
-        run: echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+        run: echo "SHA=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Login to DockerHub
         uses: docker/login-action@v3
@@ -86,16 +84,15 @@ jobs:
 
       - name: Build & Push Docker Image
         run: |
-          IMAGE=${{ env.DOCKERHUB_USERNAME }}/${{ matrix.image }}
-          TAG=${{ matrix.tag }}
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/${{ matrix.image }}
+          TAG=${{ matrix.version }}-${{ env.SHA }}
 
           echo "Building $IMAGE:$TAG"
           docker build \
             -t $IMAGE:$TAG \
-            -t $IMAGE:$TAG-${SHORT_SHA} \
+            -t $IMAGE:${{ matrix.version }} \
             -f ${{ matrix.dockerfile }} \
             ${{ matrix.context }}
 
           docker push $IMAGE:$TAG
-          docker push $IMAGE:$TAG-${SHORT_SHA}
-          
+          docker push $IMAGE:${{ matrix.version }}

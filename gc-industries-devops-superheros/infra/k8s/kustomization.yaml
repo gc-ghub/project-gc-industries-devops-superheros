@@ -1,0 +1,20 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - namespaces/superheros.yaml
+  - deployments/catalog-v1-deployment.yaml
+  - deployments/catalog-v2-deployment.yaml
+  - deployments/catalog-v3-deployment.yaml
+  - deployments/frontend-deployment.yaml
+  - deployments/inventory-deployment.yaml
+  - deployments/orders-deployment.yaml
+  - deployments/payment-deployment.yaml
+  - services/catalog-service.yaml
+  - services/frontend-service.yaml
+  - services/inventory-service.yaml
+  - services/orders-service.yaml
+  - services/payment-service.yaml
+  - istio/gateway.yaml
+  - istio/catalog-destinationrule.yaml
+  - istio/virtualservice.yaml

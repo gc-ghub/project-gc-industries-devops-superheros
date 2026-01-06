@@ -1,0 +1,7 @@
+apiVersion: v2
+name: superheros
+description: SuperHeros microservices platform with Istio and GitOps
+type: application
+version: 0.1.0
+appVersion: "1.0"
+

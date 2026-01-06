@@ -1,0 +1,46 @@
+namespace: superheros
+
+image:
+  registry: docker.io/dockergc00
+
+services:
+  frontend:
+    enabled: true
+    image: superheros-frontend
+    tag: v1
+    port: 80
+
+  catalog:
+    enabled: true
+    image: superheros-catalog
+    port: 8081
+    versions:
+      - name: v1
+        tag: v1
+        replicas: 1
+      - name: v2
+        tag: v2
+        replicas: 1
+      - name: v3
+        tag: v3
+        replicas: 1
+
+  inventory:
+    enabled: true
+    image: superheros-inventory
+    tag: v1
+    port: 8083
+
+  orders:
+    enabled: true
+    image: superheros-orders
+    tag: v1
+    port: 8082
+
+  payment:
+    enabled: true
+    image: superheros-payment
+    tag: v1
+    port: 80
+
+  

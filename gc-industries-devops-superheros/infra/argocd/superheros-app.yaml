@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/gc-ghub/project-gc-industries-devops-superheros.git
     targetRevision: main
-    path: infra/k8s
+    path: gc-industries-devops-superheros/infra/k8s
 
   destination:
     server: https://kubernetes.default.svc

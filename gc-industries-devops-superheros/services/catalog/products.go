@@ -51,9 +51,22 @@ func getProducts(version string) []Product {
 
 	// 🦇 v3 changes (Flash removed, Batman added)
 	if version == "v3" {
-		products = products[:5] // remove Flash
+		// Remove Flash (last), Remove Wonder Woman (first), Add SuperMan (first), Add Batman (last)
+		products = products[1:5] // Remove Wonder Woman (0) and Flash (5)
 
+		supermanRating := float32(4.8)
 		batmanRating := float32(4.8)
+
+		// Add SuperMan at the beginning
+		products = append([]Product{{
+			ID:     "1",
+			Name:   "SuperMan – All-in-One DevOps Hero",
+			Image:  "/images/SuperMan_All_in_one.jpg",
+			Price:  5000000,
+			Rating: supermanRating,
+		}}, products...)
+
+		// Add Batman at the end
 		products = append(products, Product{
 			ID:     "6",
 			Name:   "Batman – Dark Knight Cloud Cost Optimizer",

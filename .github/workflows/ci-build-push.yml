@@ -1,0 +1,101 @@
+name: CI - Build & Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  REGISTRY: docker.io
+  DOCKERHUB_NAMESPACE: dockergc00
+
+jobs:
+  build-and-push:
+    name: Build & Push Images
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # ---------- Frontend ----------
+          - service: frontend
+            context: frontend
+            dockerfile: Dockerfile
+            image: superheros-frontend
+            version: v1
+
+          # ---------- Inventory ----------
+          - service: inventory
+            context: inventory
+            dockerfile: Dockerfile
+            image: superheros-inventory
+            version: v1
+
+          # ---------- Orders ----------
+          - service: orders
+            context: orders
+            dockerfile: Dockerfile
+            image: superheros-orders
+            version: v1
+
+          # ---------- Payment ----------
+          - service: payment
+            context: payment
+            dockerfile: Dockerfile
+            image: superheros-payment
+            version: v1
+
+          # ---------- Catalog v1 ----------
+          - service: catalog
+            context: catalog/v1
+            dockerfile: Dockerfile
+            image: superheros-catalog
+            version: v1
+
+          # ---------- Catalog v2 ----------
+          - service: catalog
+            context: catalog/v2
+            dockerfile: Dockerfile
+            image: superheros-catalog
+            version: v2
+
+          # ---------- Catalog v3 ----------
+          - service: catalog
+            context: catalog/v3
+            dockerfile: Dockerfile
+            image: superheros-catalog
+            version: v3
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Set short Git SHA
+        id: gitsha
+        run: |
+          echo "SHA_SHORT=$(git rev-parse --short HEAD)" >> $GITHUB_ENV
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build & Push Docker Image
+        run: |
+          IMAGE_NAME=${{ env.DOCKERHUB_NAMESPACE }}/${{ matrix.image }}
+          VERSION=${{ matrix.version }}
+          SHA=${{ env.SHA_SHORT }}
+
+          echo "Building ${IMAGE_NAME}:${VERSION}-${SHA}"
+
+          docker build \
+            -f ${{ matrix.context }}/${{ matrix.dockerfile }} \
+            -t ${IMAGE_NAME}:${VERSION}-${SHA} \
+            -t ${IMAGE_NAME}:${VERSION}-latest \
+            ${{ matrix.context }}
+
+          echo "Pushing images..."
+          docker push ${IMAGE_NAME}:${VERSION}-${SHA}
+          docker push ${IMAGE_NAME}:${VERSION}-latest

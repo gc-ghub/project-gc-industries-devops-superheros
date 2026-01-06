@@ -20,50 +20,50 @@ jobs:
         include:
           # ---------- Frontend ----------
           - service: frontend
-            context: services/frontend
-            dockerfile: services/frontend/Dockerfile
+            context: gc-industries-devops-superheros/services/frontend
+            dockerfile: gc-industries-devops-superheros/services/frontend/Dockerfile
             image: superheros-frontend
             version: v1
 
           # ---------- Inventory ----------
           - service: inventory
-            context: services/inventory
-            dockerfile: services/inventory/Dockerfile
+            context: gc-industries-devops-superheros/services/inventory
+            dockerfile: gc-industries-devops-superheros/services/inventory/Dockerfile
             image: superheros-inventory
             version: v1
 
           # ---------- Orders ----------
           - service: orders
-            context: services/orders
-            dockerfile: services/orders/Dockerfile
+            context: gc-industries-devops-superheros/services/orders
+            dockerfile: gc-industries-devops-superheros/services/orders/Dockerfile
             image: superheros-orders
             version: v1
 
           # ---------- Payment ----------
           - service: payment
-            context: services/payment
-            dockerfile: services/payment/Dockerfile
+            context: gc-industries-devops-superheros/services/payment
+            dockerfile: gc-industries-devops-superheros/services/payment/Dockerfile
             image: superheros-payment
             version: v1
 
           # ---------- Catalog v1 ----------
           - service: catalog
-            context: services/catalog/v1
-            dockerfile: services/catalog/v1/Dockerfile
+            context: gc-industries-devops-superheros/services/catalog/v1
+            dockerfile: gc-industries-devops-superheros/services/catalog/v1/Dockerfile
             image: superheros-catalog
             version: v1
 
           # ---------- Catalog v2 ----------
           - service: catalog
-            context: services/catalog/v2
-            dockerfile: services/catalog/v2/Dockerfile
+            context: gc-industries-devops-superheros/services/catalog/v2
+            dockerfile: gc-industries-devops-superheros/services/catalog/v2/Dockerfile
             image: superheros-catalog
             version: v2
 
           # ---------- Catalog v3 ----------
           - service: catalog
-            context: services/catalog/v3
-            dockerfile: services/catalog/v3/Dockerfile
+            context: gc-industries-devops-superheros/services/catalog/v3
+            dockerfile: gc-industries-devops-superheros/services/catalog/v3/Dockerfile
             image: superheros-catalog
             version: v3
 

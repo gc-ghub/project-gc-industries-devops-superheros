@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-v3
+  namespace: superheros
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalog
+      version: v3
+  template:
+    metadata:
+      labels:
+        app: catalog
+        version: v3
+    spec:
+      containers:
+      - name: catalog
+        image: dockergc00/superheros-catalog:v3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        env:
+          - name: CATALOG_VERSION
+            value: "v3"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8081
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8081
+          initialDelaySeconds: 20
+          periodSeconds: 10

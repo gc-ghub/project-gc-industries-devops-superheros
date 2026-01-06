@@ -20,50 +20,50 @@ jobs:
         include:
           # ---------- Frontend ----------
           - service: frontend
-            context: frontend
-            dockerfile: Dockerfile
+            context: services/frontend
+            dockerfile: services/frontend/Dockerfile
             image: superheros-frontend
             version: v1
 
           # ---------- Inventory ----------
           - service: inventory
-            context: inventory
-            dockerfile: Dockerfile
+            context: services/inventory
+            dockerfile: services/inventory/Dockerfile
             image: superheros-inventory
             version: v1
 
           # ---------- Orders ----------
           - service: orders
-            context: orders
-            dockerfile: Dockerfile
+            context: services/orders
+            dockerfile: services/orders/Dockerfile
             image: superheros-orders
             version: v1
 
           # ---------- Payment ----------
           - service: payment
-            context: payment
-            dockerfile: Dockerfile
+            context: services/payment
+            dockerfile: services/payment/Dockerfile
             image: superheros-payment
             version: v1
 
           # ---------- Catalog v1 ----------
           - service: catalog
-            context: catalog/v1
-            dockerfile: Dockerfile
+            context: services/catalog/v1
+            dockerfile: services/catalog/v1/Dockerfile
             image: superheros-catalog
             version: v1
 
           # ---------- Catalog v2 ----------
           - service: catalog
-            context: catalog/v2
-            dockerfile: Dockerfile
+            context: services/catalog/v2
+            dockerfile: services/catalog/v2/Dockerfile
             image: superheros-catalog
             version: v2
 
           # ---------- Catalog v3 ----------
           - service: catalog
-            context: catalog/v3
-            dockerfile: Dockerfile
+            context: services/catalog/v3
+            dockerfile: services/catalog/v3/Dockerfile
             image: superheros-catalog
             version: v3
 

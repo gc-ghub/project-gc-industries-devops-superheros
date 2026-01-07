@@ -72,3 +72,4 @@ charts/*/output/
 
 # Ignore local config
 install.txt
+ci.txt

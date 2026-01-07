@@ -5,65 +5,66 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   hosts:
-  - "*"
+    - "*"
   gateways:
-  - superheros-gateway
+    - superheros-gateway
+
   http:
-  - match:
-    - uri:
-        prefix: /api/catalog
-    route:
-    - destination:
-        host: catalog
-        subset: v1
-        port:
-          number: 8081
-      weight: 40
-    - destination:
-        host: catalog
-        subset: v2
-        port:
-          number: 8081
-      weight: 30
-    - destination:
-        host: catalog
-        subset: v3
-        port:
-          number: 8081
-      weight: 30
+    - match:
+        - uri:
+            prefix: /api/catalog
+      route:
+        - destination:
+            host: catalog
+            subset: v1
+            port:
+              number: 8081
+          weight: 40
+        - destination:
+            host: catalog
+            subset: v2
+            port:
+              number: 8081
+          weight: 30
+        - destination:
+            host: catalog
+            subset: v3
+            port:
+              number: 8081
+          weight: 30
 
-  - match:
-    - uri:
-        prefix: /api/orders
-    route:
-    - destination:
-        host: orders
-        port:
-          number: 8082
+    - match:
+        - uri:
+            prefix: /api/orders
+      route:
+        - destination:
+            host: orders
+            port:
+              number: 8082
 
-  - match:
-    - uri:
-        prefix: /api/inventory
-    route:
-    - destination:
-        host: inventory
-        port:
-          number: 8083
+    - match:
+        - uri:
+            prefix: /api/inventory
+      route:
+        - destination:
+            host: inventory
+            port:
+              number: 8083
 
-  - match:
-    - uri:
-        prefix: /api/payment
-    route:
-    - destination:
-        host: payment
-        port:
-          number: 8084
+    - match:
+        - uri:
+            prefix: /api/payment
+      route:
+        - destination:
+            host: payment
+            port:
+              number: 8084
 
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        host: frontend
-        port:
-          number: 80
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: frontend
+            port:
+              number: 80

@@ -10,6 +10,21 @@ spec:
     - superheros-gateway
 
   http:
+{{- range $ver := .Values.services.catalog.versions }}
+    - match:
+        - headers:
+            cookie:
+              regex: ".*version={{ $ver.name }}.*"
+          uri:
+            prefix: /api/catalog
+      route:
+        - destination:
+            host: catalog
+            subset: {{ $ver.name }}
+            port:
+              number: 8081
+{{- end }}
+    # fallback to weighted routing if no cookie
     - match:
         - uri:
             prefix: /api/catalog

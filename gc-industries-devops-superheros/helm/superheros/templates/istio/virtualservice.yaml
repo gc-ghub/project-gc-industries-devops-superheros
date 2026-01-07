@@ -14,24 +14,15 @@ spec:
         - uri:
             prefix: /api/catalog
       route:
+{{- $weights := dict "v1" 40 "v2" 30 "v3" 30 }}
+{{- range $i, $ver := .Values.services.catalog.versions }}
         - destination:
             host: catalog
-            subset: v1
+            subset: {{ $ver.name }}
             port:
               number: 8081
-          weight: 40
-        - destination:
-            host: catalog
-            subset: v2
-            port:
-              number: 8081
-          weight: 30
-        - destination:
-            host: catalog
-            subset: v3
-            port:
-              number: 8081
-          weight: 30
+          weight: {{ index $weights $ver.name | default 30 }}
+{{- end }}
 
     - match:
         - uri:

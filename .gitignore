@@ -70,6 +70,6 @@ charts/*/output/
 # Backup files
 *~
 
-# Ignore local config
-install.txt
-ci.txt
+# Ignore txt files
+*.txt
+

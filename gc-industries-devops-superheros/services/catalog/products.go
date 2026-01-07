@@ -51,29 +51,57 @@ func getProducts(version string) []Product {
 
 	// 🦇 v3 changes (Flash removed, Batman added)
 	if version == "v3" {
-		// Remove Flash (last), Remove Wonder Woman (first), Add SuperMan (first), Add Batman (last)
-		products = products[1:5] // Remove Wonder Woman (0) and Flash (5)
-
-		supermanRating := float32(4.8)
 		batmanRating := float32(4.8)
+		supermanRating := float32(4.8)
+		ironmanRating := float32(4.7)
+		wandaRating := float32(4.6)
+		blackRating := float32(4.5)
+		spiderRating := float32(4.9)
 
-		// Add SuperMan at the beginning
-		products = append([]Product{{
-			ID:     "1",
-			Name:   "SuperMan – All-in-One DevOps Hero",
-			Image:  "/images/SuperMan_All_in_one.jpg",
-			Price:  5000000,
-			Rating: supermanRating,
-		}}, products...)
-
-		// Add Batman at the end
-		products = append(products, Product{
-			ID:     "6",
-			Name:   "Batman – Dark Knight Cloud Cost Optimizer",
-			Image:  "/images/Batman_Cost_Optimizer.jpg",
-			Price:  5500000,
-			Rating: batmanRating,
-		})
+		products = []Product{
+			{
+				ID:     "1",
+				Name:   "Batman – Dark Knight Cloud Cost Optimizer",
+				Image:  "/images/Batman_Cost_Optimizer.jpg",
+				Price:  5500000,
+				Rating: batmanRating,
+			},
+			{
+				ID:     "2",
+				Name:   "SuperMan – All-in-One DevOps Hero",
+				Image:  "/images/SuperMan_All_in_one.jpg",
+				Price:  5000000,
+				Rating: supermanRating,
+			},
+			{
+				ID:     "3",
+				Name:   "Iron Man – AI-Powered AWS Cloud Guru",
+				Image:  "/images/IronMan_AWS_AI.jpg",
+				Price:  2200000,
+				Rating: ironmanRating,
+			},
+			{
+				ID:     "4",
+				Name:   "Scarlet Witch - Terraform Enchantress",
+				Image:  "/images/Scarlet_Witch_Terraform.jpg",
+				Price:  3000000,
+				Rating: wandaRating,
+			},
+			{
+				ID:     "5",
+				Name:   "Black Widow - Expert Project Leader",
+				Image:  "/images/BlackWidow_Project_Leader.jpg",
+				Price:  1800000,
+				Rating: blackRating,
+			},
+			{
+				ID:     "6",
+				Name:   "SpiderMan - Youngest yet Talented Ansible Prodigy",
+				Image:  "/images/SpiderMan_Ansible.jpg",
+				Price:  6500000,
+				Rating: spiderRating,
+			},
+		}
 	}
 
 	return products

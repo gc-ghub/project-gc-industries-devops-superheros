@@ -2,16 +2,16 @@ apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
 metadata:
   name: catalog
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.namespace.name }}
 spec:
   host: catalog
-  trafficPolicy:
-    loadBalancer:
-      simple: ROUND_ROBIN
   subsets:
-{{- range $ver := .Values.services.catalog.versions }}
-    - name: {{ $ver.name }}
-      labels:
-        app: catalog
-        version: {{ $ver.name }}
-{{- end }}
+  - name: v1
+    labels:
+      version: v1
+  - name: v2
+    labels:
+      version: v2
+  - name: v3
+    labels:
+      version: v3

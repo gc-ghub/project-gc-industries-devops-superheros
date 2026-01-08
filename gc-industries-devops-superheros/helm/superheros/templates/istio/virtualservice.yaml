@@ -2,75 +2,68 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: superheros-routing
-  namespace: {{ .Values.namespace }}
+  namespace: {{ .Values.namespace.name }}
 spec:
   hosts:
-    - "*"
+  - "*"
   gateways:
-    - superheros-gateway
-
+  - superheros-gateway
   http:
-{{- range $ver := .Values.services.catalog.versions }}
-    - match:
-        - headers:
-            cookie:
-              regex: ".*version={{ $ver.name }}.*"
-          uri:
-            prefix: /api/catalog
-      route:
-        - destination:
-            host: catalog
-            subset: {{ $ver.name }}
-            port:
-              number: 8081
-{{- end }}
-    # fallback to weighted routing if no cookie
-    - match:
-        - uri:
-            prefix: /api/catalog
-      route:
-{{- $weights := dict "v1" 40 "v2" 30 "v3" 30 }}
-{{- range $i, $ver := .Values.services.catalog.versions }}
-        - destination:
-            host: catalog
-            subset: {{ $ver.name }}
-            port:
-              number: 8081
-          weight: {{ index $weights $ver.name | default 30 }}
-{{- end }}
+  - match:
+    - uri:
+        prefix: /api/catalog
+    route:
+    - destination:
+        host: catalog
+        subset: v1
+        port:
+          number: 8081
+      weight: 40
+    - destination:
+        host: catalog
+        subset: v2
+        port:
+          number: 8081
+      weight: 30
+    - destination:
+        host: catalog
+        subset: v3
+        port:
+          number: 8081
+      weight: 30
 
-    - match:
-        - uri:
-            prefix: /api/orders
-      route:
-        - destination:
-            host: orders
-            port:
-              number: 8082
+  - match:
+    - uri:
+        prefix: /api/orders
+    route:
+    - destination:
+        host: orders
+        port:
+          number: 8082
 
-    - match:
-        - uri:
-            prefix: /api/inventory
-      route:
-        - destination:
-            host: inventory
-            port:
-              number: 8083
+  - match:
+    - uri:
+        prefix: /api/inventory
+    route:
+    - destination:
+        host: inventory
+        port:
+          number: 8083
 
-    - match:
-        - uri:
-            prefix: /api/payment
-      route:
-        - destination:
-            host: payment
-            port:
-              number: 8084
+  - match:
+    - uri:
+        prefix: /api/payment
+    route:
+    - destination:
+        host: payment
+        port:
+          number: 8084
 
-    - match:
-        - uri:
-            prefix: /
-      route:
-        - destination:
-            host: frontend
-            port:
-              number: 80
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        host: frontend
+        port:
+          number: 80

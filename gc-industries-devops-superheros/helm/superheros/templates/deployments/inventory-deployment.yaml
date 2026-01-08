@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory
+  namespace: {{ .Values.namespace.name }}
+spec:
+  replicas: {{ .Values.services.inventory.replicas | default 1 }}
+  selector:
+    matchLabels:
+      app: inventory
+  template:
+    metadata:
+      labels:
+        app: inventory
+        version: v1
+    spec:
+      containers:
+        - name: inventory
+          image: {{ .Values.image.registry }}/{{ .Values.services.inventory.image }}:{{ .Values.services.inventory.tag }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8083
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8083
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8083
+            initialDelaySeconds: 20
+            periodSeconds: 10

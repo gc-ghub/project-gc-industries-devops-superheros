@@ -1,4 +1,5 @@
-namespace: superheros
+namespace: 
+  name: superheros
 
 image:
   registry: docker.io/dockergc00
@@ -7,6 +8,7 @@ services:
   frontend:
     enabled: true
     image: superheros-frontend
+    replicas: 1
     tag: v1
     port: 80
 
@@ -15,13 +17,13 @@ services:
     image: superheros-catalog
     port: 8081
     versions:
-      - name: v1
+      - name: superheros-catalog
         tag: v1
         replicas: 1
-      - name: v2
+      - name: superheros-catalog
         tag: v2
         replicas: 1
-      - name: v3
+      - name: superheros-catalog
         tag: v3
         replicas: 1
 

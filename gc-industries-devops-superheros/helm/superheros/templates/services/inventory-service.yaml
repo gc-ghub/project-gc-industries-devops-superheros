@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: inventory
+  namespace: {{ .Values.namespace.name }}
+spec:
+  selector:
+    app: inventory
+  ports:
+    - name: http
+      port: 8083
+      targetPort: 8083

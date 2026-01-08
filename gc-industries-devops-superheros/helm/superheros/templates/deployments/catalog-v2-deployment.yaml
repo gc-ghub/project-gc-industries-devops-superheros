@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-v2
+  namespace: {{ .Values.namespace.name }}
+spec:
+  replicas: {{ .Values.services.catalog.versions[1].replicas | default 1 }}
+  selector:
+    matchLabels:
+      app: catalog
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: catalog
+        version: v2
+    spec:
+      containers:
+      - name: catalog
+        image: {{ .Values.image.registry }}/{{ .Values.services.catalog.versions[1].name }}:{{ .Values.services.catalog.versions[1].tag }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8081
+        env:
+          - name: CATALOG_VERSION
+            value: "v2"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 8081
+          initialDelaySeconds: 10
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8081
+          initialDelaySeconds: 20
+          periodSeconds: 10

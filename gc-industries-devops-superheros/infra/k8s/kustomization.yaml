@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - namespaces/superheros.yaml
+  - namespaces/namespace.yaml
   - deployments/catalog-v1-deployment.yaml
   - deployments/catalog-v2-deployment.yaml
   - deployments/catalog-v3-deployment.yaml

@@ -15,13 +15,13 @@ services:
     port: 8081
     versions:
       - name: superheros-catalog
-        tag: v1-${SHA}
+        tag: v1-${TAG}
         replicas: 1
       - name: superheros-catalog
-        tag: v2-${SHA}
+        tag: v2-${TAG}
         replicas: 1
       - name: superheros-catalog
-        tag: v3-${SHA}
+        tag: v3-${TAG}
         replicas: 1
   inventory:
     enabled: true

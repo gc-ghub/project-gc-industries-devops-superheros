@@ -1,0 +1,30 @@
+name: CI - Frontend (Build Superheros Frontend Docker Image and Push to DockerHub)
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - gc-industries-devops-superheros/services/frontend/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: gc-industries-devops-superheros
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build & Push Frontend Image
+        run: |
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-frontend
+
+          docker build -t $IMAGE:latest services/frontend
+          docker push $IMAGE:latest

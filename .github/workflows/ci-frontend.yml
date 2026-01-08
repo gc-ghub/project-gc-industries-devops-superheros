@@ -1,3 +1,5 @@
+# -- Build and push Docker image for Frontend service -- ## 
+
 name: CI - Frontend
 
 on:

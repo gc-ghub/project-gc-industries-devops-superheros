@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - gc-industries-devops-superheros/services/catalog/**
-      - .github/workflows/ci-catalog.yml
 
 jobs:
   build-and-push:

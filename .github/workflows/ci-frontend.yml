@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - gc-industries-devops-superheros/services/frontend/**
-      - .github/workflows/ci-frontend.yml
 
 jobs:
   build-and-push:
@@ -30,5 +29,5 @@ jobs:
         run: |
           IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-frontend
 
-          docker build -t $IMAGE:latest services/frontend
-          docker push $IMAGE:latest
+          docker build -t $IMAGE:v1 services/frontend
+          docker push $IMAGE:v1

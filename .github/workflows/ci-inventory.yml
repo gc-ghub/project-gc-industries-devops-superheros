@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - gc-industries-devops-superheros/services/inventory/**
-      - .github/workflows/ci-inventory.yml
 
 jobs:
   build-and-push:
@@ -30,5 +29,5 @@ jobs:
         run: |
           IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-inventory
 
-          docker build -t $IMAGE:latest services/inventory
-          docker push $IMAGE:latest
+          docker build -t $IMAGE:v1 services/inventory
+          docker push $IMAGE:v1

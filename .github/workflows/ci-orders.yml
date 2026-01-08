@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - gc-industries-devops-superheros/services/orders/**
-      - .github/workflows/ci-orders.yml
 
 jobs:
   build-and-push:
@@ -30,5 +29,5 @@ jobs:
         run: |
           IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-orders
 
-          docker build -t $IMAGE:latest services/orders
-          docker push $IMAGE:latest
+          docker build -t $IMAGE:v1 services/orders
+          docker push $IMAGE:v1

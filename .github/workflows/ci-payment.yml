@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - gc-industries-devops-superheros/services/payment/**
-      - .github/workflows/ci-payment.yml
 
 jobs:
   build-and-push:
@@ -30,5 +29,5 @@ jobs:
         run: |
           IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-payment
 
-          docker build -t $IMAGE:latest services/payment
-          docker push $IMAGE:latest
+          docker build -t $IMAGE:v1 services/payment
+          docker push $IMAGE:v1

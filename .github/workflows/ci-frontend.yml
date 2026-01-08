@@ -1,19 +1,24 @@
-# -- Build and push Docker image for Frontend service -- ## 
-
 name: CI - Frontend
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
     paths:
-      - services/frontend/**
+      - gc-industries-devops-superheros/services/frontend/**
+      - .github/workflows/ci-frontend.yml
 
 jobs:
-  build:
+  build-and-push:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: gc-industries-devops-superheros
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout source
+        uses: actions/checkout@v4
 
       - name: Login to DockerHub
         uses: docker/login-action@v3

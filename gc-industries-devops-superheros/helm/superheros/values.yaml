@@ -7,7 +7,7 @@ services:
     enabled: true
     image: superheros-frontend
     replicas: 1
-    tag: v1-dd6bccc
+    tag: v1-c693962
     port: 80
   catalog:
     enabled: true

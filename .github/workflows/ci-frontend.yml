@@ -1,17 +1,14 @@
-name: CI - Frontend (Build Superheros Frontend Docker Image and Push to DockerHub)
+name: CI - Frontend
 
 on:
   push:
     branches: [ main ]
     paths:
-      - gc-industries-devops-superheros/services/frontend/**
+      - services/frontend/**
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: gc-industries-devops-superheros
 
     steps:
       - uses: actions/checkout@v4

@@ -28,17 +28,20 @@ jobs:
       - name: Build & Push Catalog v1
         run: |
           IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-catalog
-          docker build -t $IMAGE:v1 services/catalog
-          docker push $IMAGE:v1
+          TAG=v1-${GITHUB_SHA::7}
+          docker build -t $IMAGE:$TAG services/catalog
+          docker push $IMAGE:$TAG
 
       - name: Build & Push Catalog v2
         run: |
           IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-catalog
-          docker build -t $IMAGE:v2 services/catalog
-          docker push $IMAGE:v2
+          TAG=v2-${GITHUB_SHA::7}
+          docker build -t $IMAGE:$TAG services/catalog
+          docker push $IMAGE:$TAG
 
       - name: Build & Push Catalog v3
         run: |
           IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-catalog
-          docker build -t $IMAGE:v3 services/catalog
-          docker push $IMAGE:v3
+          TAG=v3-${GITHUB_SHA::7}
+          docker build -t $IMAGE:$TAG services/catalog
+          docker push $IMAGE:$TAG

@@ -20,24 +20,24 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Set commit SHA
+      - name: Set image tag
         run: |
-          echo "SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+          echo "TAG=${GITHUB_SHA::7}" >> $GITHUB_ENV
 
       - name: Update Helm values (catalog)
         run: |
-          yq -i '.services.catalog.versions[0].tag = "v1-${SHA}"' \
+          yq -i '.services.catalog.versions[0].tag = "v1-${TAG}"' \
             gc-industries-devops-superheros/helm/superheros/values.yaml
 
-          yq -i '.services.catalog.versions[1].tag = "v2-${SHA}"' \
+          yq -i '.services.catalog.versions[1].tag = "v2-${TAG}"' \
             gc-industries-devops-superheros/helm/superheros/values.yaml
 
-          yq -i '.services.catalog.versions[2].tag = "v3-${SHA}"' \
+          yq -i '.services.catalog.versions[2].tag = "v3-${TAG}"' \
             gc-industries-devops-superheros/helm/superheros/values.yaml
 
       - name: Commit & push Helm change
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git commit -am "chore(cd): update catalog images ${SHA}"
+          git commit -am "chore(cd): update catalog images ${TAG}"
           git push

@@ -24,7 +24,7 @@ jobs:
       - name: Update Helm values (frontend)
         run: |
           yq -i '.services.frontend.tag = env(TAG)' \
-            gc-industries-devops-superheros/infra/helm/values.yaml
+            gc-industries-devops-superheros/helm/superheros/values.yaml
 
       - name: Commit & push Helm change
         run: |

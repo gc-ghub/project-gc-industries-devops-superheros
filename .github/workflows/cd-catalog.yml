@@ -27,13 +27,13 @@ jobs:
       - name: Update Helm values (catalog)
         run: |
           yq -i '.services.catalog.versions[0].tag = "v1-${SHA}"' \
-            gc-industries-devops-superheros/infra/helm/values.yaml
+            gc-industries-devops-superheros/helm/superheros/values.yaml
 
           yq -i '.services.catalog.versions[1].tag = "v2-${SHA}"' \
-            gc-industries-devops-superheros/infra/helm/values.yaml
+            gc-industries-devops-superheros/helm/superheros/values.yaml
 
           yq -i '.services.catalog.versions[2].tag = "v3-${SHA}"' \
-            gc-industries-devops-superheros/infra/helm/values.yaml
+            gc-industries-devops-superheros/helm/superheros/values.yaml
 
       - name: Commit & push Helm change
         run: |

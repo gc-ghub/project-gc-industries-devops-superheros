@@ -26,13 +26,13 @@ jobs:
 
       - name: Update Helm values (catalog)
         run: |
-          yq -i '.services.catalog.versions[0].tag = "v1-${TAG}"' \
+          yq -i ".services.catalog.versions[0].tag = \"v1-${TAG}\"" \
             gc-industries-devops-superheros/helm/superheros/values.yaml
 
-          yq -i '.services.catalog.versions[1].tag = "v2-${TAG}"' \
+          yq -i ".services.catalog.versions[1].tag = \"v2-${TAG}\"" \
             gc-industries-devops-superheros/helm/superheros/values.yaml
 
-          yq -i '.services.catalog.versions[2].tag = "v3-${TAG}"' \
+          yq -i ".services.catalog.versions[2].tag = \"v3-${TAG}\"" \
             gc-industries-devops-superheros/helm/superheros/values.yaml
 
       - name: Commit & push Helm change

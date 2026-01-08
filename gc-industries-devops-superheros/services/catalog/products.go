@@ -110,4 +110,5 @@ func getProducts(version string) []Product {
 // test comment for pipeline
 // another test comment for pipeline
 // one more test comment for pipeline
+// one last test comment for pipeline
 // final test comment for pipeline

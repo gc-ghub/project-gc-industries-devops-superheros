@@ -1,0 +1,45 @@
+name: CI - Catalog (v1 v2 v3)
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - gc-industries-devops-superheros/services/catalog/**
+      - .github/workflows/ci-catalog.yml
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: gc-industries-devops-superheros
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build & Push Catalog v1
+        run: |
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-catalog
+          docker build -t $IMAGE:v1 services/catalog
+          docker push $IMAGE:v1
+
+      - name: Build & Push Catalog v2
+        run: |
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-catalog
+          docker build -t $IMAGE:v2 services/catalog
+          docker push $IMAGE:v2
+
+      - name: Build & Push Catalog v3
+        run: |
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-catalog
+          docker build -t $IMAGE:v3 services/catalog
+          docker push $IMAGE:v3

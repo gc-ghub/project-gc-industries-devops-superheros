@@ -4,7 +4,7 @@ metadata:
   name: catalog-v1
   namespace: {{ .Values.namespace.name }}
 spec:
-  replicas: {{ .Values.services.catalog.versions[0].replicas | default 1 }}
+  replicas: {{ (index .Values.services.catalog.versions 0).replicas | default 1 }}
   selector:
     matchLabels:
       app: catalog
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: catalog
-          image: {{ .Values.image.registry }}/{{ .Values.services.catalog.versions[0].name }}:{{ .Values.services.catalog.versions[0].tag }}
+          image: "{{ .Values.image.registry }}/{{ (index .Values.services.catalog.versions 0).name }}:{{ (index .Values.services.catalog.versions 0).tag }}"
           imagePullPolicy: Always
           ports:
             - containerPort: 8081
@@ -36,3 +36,4 @@ spec:
               port: 8081
             initialDelaySeconds: 20
             periodSeconds: 10
+          

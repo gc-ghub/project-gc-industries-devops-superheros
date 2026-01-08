@@ -3,3 +3,9 @@
 // Frontend must NOT define products anymore.
 
 export default [];
+
+
+
+
+
+// test comment for pipeline

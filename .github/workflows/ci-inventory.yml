@@ -1,0 +1,34 @@
+name: CI - Inventory 
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - gc-industries-devops-superheros/services/inventory/**
+      - .github/workflows/ci-inventory.yml
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: gc-industries-devops-superheros
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build & Push Inventory Image
+        run: |
+          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/superheros-inventory
+
+          docker build -t $IMAGE:latest services/inventory
+          docker push $IMAGE:latest

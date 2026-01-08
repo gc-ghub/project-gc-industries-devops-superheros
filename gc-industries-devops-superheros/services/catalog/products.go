@@ -24,7 +24,7 @@ func getProducts(version string) []Product {
 		{
 			ID:    "4",
 			Name:  "Thor – Lightning-Fast GitHub Actions Hero",
-			Image: "/images/Thor_GitHub_Actions.jpg",
+			Image: "/images/Thor_GitHub_Actions_Hero.jpg",
 			Price: 4000000,
 		},
 		{

@@ -486,3 +486,37 @@ body{
   font-weight: 600;
   font-size: 0.95rem;
 }
+
+
+
+
+
+/* ===============================
+   Catalog Runtime Metadata Bar
+   =============================== */
+
+.catalog-runtime-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin: 18px auto 28px;
+  padding: 12px 18px;
+  max-width: 1200px;
+
+  background: rgba(0, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  border-radius: 12px;
+
+  font-size: 0.9rem;
+  color: #cfffff;
+}
+
+.catalog-runtime-bar span {
+  white-space: nowrap;
+}
+
+.catalog-runtime-bar strong {
+  color: #00f5ff;
+}

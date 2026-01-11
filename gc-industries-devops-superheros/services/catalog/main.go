@@ -15,13 +15,33 @@ type Product struct {
 	Rating float32 `json:"rating,omitempty"`
 }
 
+type CatalogResponse struct {
+	Version     string    `json:"version"`
+	Description string    `json:"description"`
+	Pod         string    `json:"pod"`
+	Namespace   string    `json:"namespace"`
+	Products    []Product `json:"products"`
+}
+
 func catalogHandler(w http.ResponseWriter, r *http.Request) {
 	version := os.Getenv("CATALOG_VERSION")
+	pod := os.Getenv("POD_NAME")
+	namespace := os.Getenv("POD_NAMESPACE")
 
 	products := getProducts(version)
 
+	description := getVersionDescription(version)
+
+	resp := CatalogResponse{
+		Version:     version,
+		Description: description,
+		Pod:         pod,
+		Namespace:   namespace,
+		Products:    products,
+	}
+
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(products)
+	json.NewEncoder(w).Encode(resp)
 }
 
 func healthHandler(w http.ResponseWriter, r *http.Request) {

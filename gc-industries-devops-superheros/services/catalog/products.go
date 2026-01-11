@@ -1,5 +1,18 @@
 package main
 
+func getVersionDescription(version string) string {
+	switch version {
+	case "v1":
+		return "Version 1️⃣ of catalog with no rating."
+	case "v2":
+		return "Version 2️⃣ of catalog with ⭐ rating."
+	case "v3":
+		return "Version 3️⃣ of catalog with new products and ⭐ rating."
+	default:
+		return "Unknown catalog version."
+	}
+}
+
 func getProducts(version string) []Product {
 
 	products := []Product{
@@ -49,67 +62,53 @@ func getProducts(version string) []Product {
 		}
 	}
 
-	// 🦇 v3 changes (Flash removed, Batman added)
+	// 🦇 v3 changes
 	if version == "v3" {
-		batmanRating := float32(4.8)
-		supermanRating := float32(4.8)
-		ironmanRating := float32(4.7)
-		wandaRating := float32(4.6)
-		blackRating := float32(4.5)
-		spiderRating := float32(4.9)
-
 		products = []Product{
 			{
 				ID:     "1",
 				Name:   "Batman – Dark Knight Cloud Cost Optimizer",
 				Image:  "/images/Batman_Cost_Optimizer.jpg",
 				Price:  5500000,
-				Rating: batmanRating,
+				Rating: 4.8,
 			},
 			{
 				ID:     "2",
 				Name:   "SuperMan – All-in-One DevOps Hero",
 				Image:  "/images/SuperMan_All_in_one.jpg",
 				Price:  5000000,
-				Rating: supermanRating,
+				Rating: 4.8,
 			},
 			{
 				ID:     "3",
 				Name:   "Iron Man – AI-Powered AWS Cloud Guru",
 				Image:  "/images/IronMan_AWS_AI.jpg",
 				Price:  2200000,
-				Rating: ironmanRating,
+				Rating: 4.7,
 			},
 			{
 				ID:     "4",
 				Name:   "Scarlet Witch - Terraform Enchantress",
 				Image:  "/images/Scarlet_Witch_Terraform.jpg",
 				Price:  3000000,
-				Rating: wandaRating,
+				Rating: 4.6,
 			},
 			{
 				ID:     "5",
 				Name:   "Black Widow - Expert Project Leader",
 				Image:  "/images/BlackWidow_Project_Leader.jpg",
 				Price:  1800000,
-				Rating: blackRating,
+				Rating: 4.5,
 			},
 			{
 				ID:     "6",
 				Name:   "SpiderMan - Youngest yet Talented Ansible Prodigy",
 				Image:  "/images/SpiderMan_Ansible.jpg",
 				Price:  6500000,
-				Rating: spiderRating,
+				Rating: 4.9,
 			},
 		}
 	}
 
 	return products
 }
-
-// test comment for pipeline
-// another test comment for pipeline
-// one more test comment for pipeline
-// one last test comment for pipeline
-// final test comment for pipeline
-// testing pipeline

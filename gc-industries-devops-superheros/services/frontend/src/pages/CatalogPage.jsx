@@ -52,11 +52,11 @@ export default function CatalogPage() {
   return (
     <section className="centered-page catalog">
       <h1 className="page-title">
-        🛒 Our Carefully Crafted Product Catalog
+        🛒 Our Carefully Crafted Extensive Product Catalog.
       </h1>
 
       <p className="page-sub">
-        Pick your SuperHeros. New recruits coming soon…
+        Pick your SuperHeros. Build your strong DevOps team.
       </p>
 
       <div className="product-grid cinematic-grid">

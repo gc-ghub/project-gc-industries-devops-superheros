@@ -24,6 +24,8 @@ spec:
           env:
             - name: CATALOG_VERSION
               value: "v3"
+            - name: TRAFFIC_WEIGHT
+              value: "{{ (index .Values.services.catalog.versions 2).trafficWeight | default 0 }}"
             - name: POD_NAME
               valueFrom:
                 fieldRef:

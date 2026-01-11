@@ -27,6 +27,7 @@ export default function CatalogPage() {
           setCatalogMeta({
             version: data.version,
             description: data.description,
+            trafficWeight: data.trafficWeight,
             pod: data.pod,
             namespace: data.namespace,
           });
@@ -56,8 +57,10 @@ export default function CatalogPage() {
 
       {/* 🔥 Runtime Metadata Bar */}
       <div className="catalog-runtime-bar">
+        <span>📦 <strong>Catalog Runtime</strong></span>
         <span><strong>{catalogMeta.description}</strong></span>
         <span>Version: <strong>{catalogMeta.version}</strong></span>
+        <span>Configured Istio Traffic Weight: <strong>{catalogMeta.trafficWeight}%</strong></span>
         <span>Pod: <strong>{catalogMeta.pod}</strong></span>
         <span>Namespace: <strong>{catalogMeta.namespace}</strong></span>
       </div>

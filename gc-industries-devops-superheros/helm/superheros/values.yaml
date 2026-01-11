@@ -17,12 +17,15 @@ services:
       - name: superheros-catalog
         tag: v1-cbee687
         replicas: 1
+        trafficWeight: 40
       - name: superheros-catalog
         tag: v2-cbee687
         replicas: 1
+        trafficWeight: 30
       - name: superheros-catalog
         tag: v3-cbee687
         replicas: 1
+        trafficWeight: 30
   inventory:
     enabled: true
     image: superheros-inventory

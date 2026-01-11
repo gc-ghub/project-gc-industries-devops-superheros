@@ -25,7 +25,7 @@ spec:
             - name: CATALOG_VERSION
               value: "v3"
             - name: TRAFFIC_WEIGHT
-              value: "{{ (index .Values.services.catalog.versions 2).weight | quote }}"
+              value: "{{ (index .Values.services.catalog.versions 2).trafficWeight }}"
             - name: POD_NAME
               valueFrom:
                 fieldRef:

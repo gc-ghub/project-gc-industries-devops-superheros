@@ -60,7 +60,7 @@ export default function CatalogPage() {
         <span>📦 <strong>Catalog Runtime</strong></span>
         <span><strong>{catalogMeta.description}</strong></span>
         <span>Version: <strong>{catalogMeta.version}</strong></span>
-        <span>Configured Istio Traffic Weight: <strong>{catalogMeta.weight}%</strong></span>
+        <span>Configured Istio Traffic Weight: <strong>{catalogMeta.trafficWeight}%</strong></span>
         <span>Pod: <strong>{catalogMeta.pod}</strong></span>
         <span>Namespace: <strong>{catalogMeta.namespace}</strong></span>
       </div>

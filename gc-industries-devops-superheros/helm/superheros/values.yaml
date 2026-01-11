@@ -17,15 +17,15 @@ services:
       - name: superheros-catalog
         tag: v1-ef434d9
         replicas: 1
-        weight: 40
+        trafficWeight: 40
       - name: superheros-catalog
         tag: v2-ef434d9
         replicas: 1
-        weight: 30
+        trafficWeight: 30
       - name: superheros-catalog
         tag: v3-ef434d9
         replicas: 1
-        weight: 30
+        trafficWeight: 30
   inventory:
     enabled: true
     image: superheros-inventory

@@ -57,7 +57,7 @@ export default function CatalogPage() {
 
       {/* 🔥 Runtime Metadata Bar */}
       <div className="catalog-runtime-bar">
-        <span>📦 <strong>Catalog Runtime</strong></span>
+        {/*<span>📦 <strong>Catalog Runtime</strong></span> */}
         {catalogMeta.description && (
           <span><strong>{catalogMeta.description}</strong></span>
         )}

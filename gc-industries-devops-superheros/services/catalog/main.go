@@ -40,7 +40,6 @@ func catalogHandler(w http.ResponseWriter, r *http.Request) {
 		Products:    products,
 	}
 
-	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(resp)
 }
 

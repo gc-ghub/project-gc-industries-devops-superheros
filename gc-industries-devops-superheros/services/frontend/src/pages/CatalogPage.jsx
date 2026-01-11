@@ -56,7 +56,6 @@ export default function CatalogPage() {
 
       {/* 🔥 Runtime Metadata Bar */}
       <div className="catalog-runtime-bar">
-        <span>📦 <strong>Catalog Runtime</strong></span>
         <span><strong>{catalogMeta.description}</strong></span>
         <span>Version: <strong>{catalogMeta.version}</strong></span>
         <span>Pod: <strong>{catalogMeta.pod}</strong></span>

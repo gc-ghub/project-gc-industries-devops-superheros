@@ -509,8 +509,8 @@ body{
   border: 1px solid rgba(0, 255, 255, 0.2);
   border-radius: 12px;
 
-  font-size: 1.1rem;
-  color: #057979;
+  font-size: 1.3rem;
+  color: #fafafa;
 }
 
 .catalog-runtime-bar span {

@@ -58,11 +58,21 @@ export default function CatalogPage() {
       {/* 🔥 Runtime Metadata Bar */}
       <div className="catalog-runtime-bar">
         <span>📦 <strong>Catalog Runtime</strong></span>
-        <span><strong>{catalogMeta.description}</strong></span>
-        <span>Version: <strong>{catalogMeta.version}</strong></span>
-        <span>Configured Istio Traffic Weight: <strong>{catalogMeta.trafficWeight}%</strong></span>
-        <span>Pod: <strong>{catalogMeta.pod}</strong></span>
-        <span>Namespace: <strong>{catalogMeta.namespace}</strong></span>
+        {catalogMeta.description && (
+          <span><strong>{catalogMeta.description}</strong></span>
+        )}
+        {catalogMeta.version && (
+          <span>Version: <strong>{catalogMeta.version}</strong></span>
+        )}
+        {catalogMeta.trafficWeight !== undefined && catalogMeta.trafficWeight !== null && catalogMeta.trafficWeight !== "" && (
+          <span>Configured Istio Traffic Weight: <strong>{catalogMeta.trafficWeight}%</strong></span>
+        )}
+        {catalogMeta.pod && (
+          <span>Pod: <strong>{catalogMeta.pod}</strong></span>
+        )}
+        {catalogMeta.namespace && (
+          <span>Namespace: <strong>{catalogMeta.namespace}</strong></span>
+        )}
       </div>
 
       <div className="product-grid cinematic-grid">

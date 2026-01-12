@@ -115,3 +115,4 @@ func getProducts(version string) []Product {
 
 // test comment
 // another test comment
+// more comments

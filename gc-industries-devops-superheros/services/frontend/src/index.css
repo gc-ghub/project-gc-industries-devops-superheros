@@ -505,11 +505,12 @@ body{
   padding: 12px 18px;
   max-width: 1200px;
 
-  background: rgba(7, 123, 123, 0.08);
+  /*background: rgba(7, 123, 123, 0.08);*/
+  background: hsl(174, 100%, 42%);
   border: 1px solid rgba(0, 255, 255, 0.2);
   border-radius: 12px;
 
-  font-size: 16px;
+  font-size: 15px;
   color: #fafafa;
 }
 

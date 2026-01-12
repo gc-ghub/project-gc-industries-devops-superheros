@@ -65,7 +65,7 @@ export default function CatalogPage() {
           <span>Version: <strong>{catalogMeta.version}</strong></span>
         )}
         {catalogMeta.trafficWeight !== undefined && catalogMeta.trafficWeight !== null && catalogMeta.trafficWeight !== "" && (
-          <span>Configured Istio Traffic Weight: <strong>{catalogMeta.trafficWeight}%</strong></span>
+          <span>Configured Traffic Weight: <strong>{catalogMeta.trafficWeight}%</strong></span>
         )}
         {catalogMeta.pod && (
           <span>Pod: <strong>{catalogMeta.pod}</strong></span>

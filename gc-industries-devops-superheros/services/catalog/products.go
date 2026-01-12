@@ -3,11 +3,11 @@ package main
 func getVersionDescription(version string) string {
 	switch version {
 	case "v1":
-		return "Version 1️⃣ of catalog with no rating."
+		return "Catalog v 1️⃣with no rating."
 	case "v2":
-		return "Version 2️⃣ of catalog with ⭐ rating."
+		return "Catalog v 2️⃣ with ⭐ rating."
 	case "v3":
-		return "Version 3️⃣ of catalog with new products and ⭐ rating."
+		return "Catalog v 3️⃣ with new products and ⭐ rating."
 	default:
 		return "Unknown catalog version."
 	}

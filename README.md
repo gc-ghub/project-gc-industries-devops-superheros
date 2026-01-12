@@ -123,7 +123,7 @@ This is a real-world platform engineering example, not just a demo.
 ![Kiali Mesh Overview](gc-industries-devops-superheros/docs/pictures/kiali_1.png)
 *Kiali: Service mesh topology overview*
 
-![Kiali Traffic Animation](gc-industries-devops-superheros/docs/pictures/kiali_2.png)
+![Kiali Traffic Animation](gc-industries-devops-superheros/docs/pictures/Kiali_2.png)
 *Kiali: Real-time traffic animation*
 
 ![Kiali Graph](gc-industries-devops-superheros/docs/pictures/kiali_3.png)

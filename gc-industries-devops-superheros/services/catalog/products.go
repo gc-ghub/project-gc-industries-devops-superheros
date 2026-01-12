@@ -3,7 +3,7 @@ package main
 func getVersionDescription(version string) string {
 	switch version {
 	case "v1":
-		return "Catalog v1️⃣with no rating."
+		return "Catalog v1️⃣ with no rating."
 	case "v2":
 		return "Catalog v2️⃣ with ⭐ rating."
 	case "v3":

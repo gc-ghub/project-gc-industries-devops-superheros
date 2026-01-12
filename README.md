@@ -1,4 +1,4 @@
-# GC Industries – DevOps SuperHeroes 🦸‍♂️
+# GC Industries – DevOps SuperHeroes 🤖🏅⭐
 
 A modern, production-style microservices application that showcases advanced DevOps, GitOps, and Service Mesh practices using Kubernetes (AWS EKS), Istio, Argo CD, and GitHub Actions.
 

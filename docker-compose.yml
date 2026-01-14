@@ -9,18 +9,6 @@ services:
     networks:
       - supernet
 
-  orders:
-    image: dockergc00/orders:local
-    container_name: orders
-    ports:
-      - "8082:8082"
-    networks:
-      - supernet
-    environment:
-      - CATALOG_URL=http://catalog:8081
-      - INVENTORY_URL=http://inventory:8083
-      - PAYMENT_URL=http://payment:8084
-
   inventory:
     image: dockergc00/inventory:local
     container_name: inventory
@@ -37,6 +25,18 @@ services:
     networks:
       - supernet
 
+  orders:
+    image: dockergc00/orders:local
+    container_name: orders
+    ports:
+      - "8082:8082"
+    networks:
+      - supernet
+    environment:
+      - CATALOG_URL=http://catalog:8081
+      - INVENTORY_URL=http://inventory:8083
+      - PAYMENT_URL=http://payment:8084
+
   frontend:
     image: dockergc00/frontend:local
     container_name: frontend
@@ -45,10 +45,10 @@ services:
     networks:
       - supernet
     environment:
-      - VITE_CATALOG_API=http://localhost:8081
-      - VITE_ORDERS_API=http://localhost:8082
-      - VITE_INVENTORY_API=http://localhost:8083
-      - VITE_PAYMENT_API=http://localhost:8084
+      - VITE_CATALOG_API=http://catalog:8081
+      - VITE_ORDERS_API=http://orders:8082
+      - VITE_INVENTORY_API=http://inventory:8083
+      - VITE_PAYMENT_API=http://payment:8084
 
 networks:
   supernet:

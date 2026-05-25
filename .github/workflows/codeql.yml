@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: ${{ matrix.language }}
 
@@ -45,7 +45,7 @@ jobs:
       # =========================
       - name: Autobuild
         if: matrix.language != 'csharp'
-        uses: github/codeql-action/autobuild@v3
+        uses: github/codeql-action/autobuild@v4
 
       # =========================
       # Manual build for C#
@@ -70,4 +70,4 @@ jobs:
       # Analyze
       # =========================
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4

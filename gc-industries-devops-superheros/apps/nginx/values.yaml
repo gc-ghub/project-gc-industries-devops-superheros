@@ -1,0 +1,33 @@
+# Values for charts/app — rendered by Endurance
+---
+app:
+    name: nginx
+mesh:
+    enabled: true
+route:
+    enabled: true
+    path: /
+    service: nginx
+    port: 8080
+    gateway: istio-system/endurance-gateway
+services:
+    - name: nginx
+      image: docker.io/nginx
+      tag: 1.30.4-trixie
+      port: 8080
+      replicas: 1
+      resources:
+        requests:
+            cpu: 50m
+            memory: 64Mi
+        limits:
+            cpu: 500m
+            memory: 512Mi
+      security:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        allowPrivilegeEscalation: false
+        dropCapabilities:
+            - ALL

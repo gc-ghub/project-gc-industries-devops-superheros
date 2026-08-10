@@ -35,7 +35,7 @@ route:
 # this is the N=1 case. Add another entry here and re-run onboard to grow it.
 services:
   - name: bad-app
-    image: docker.io/dockergc00/bad-app 
+    image: docker.io/dockergc00/bad-app
     tag: v2
     port: 8080
     replicas: 1

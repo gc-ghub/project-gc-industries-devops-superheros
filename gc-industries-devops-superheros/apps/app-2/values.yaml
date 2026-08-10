@@ -1,0 +1,33 @@
+# Values for charts/app — rendered by Endurance
+---
+app:
+    name: app-2
+mesh:
+    enabled: true
+route:
+    enabled: true
+    path: /app-2
+    service: app-2
+    port: 8080
+    gateway: istio-system/endurance-gateway
+services:
+    - name: app-2
+      image: docker.io/dockergc00/bad-app
+      tag: v2
+      port: 8080
+      replicas: 1
+      resources:
+        requests:
+            cpu: 50m
+            memory: 64Mi
+        limits:
+            cpu: 500m
+            memory: 512Mi
+      security:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        allowPrivilegeEscalation: false
+        dropCapabilities:
+            - ALL

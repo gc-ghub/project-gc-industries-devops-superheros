@@ -28,7 +28,7 @@ mesh:
 # /argocd, /kiali, /grafana, /prometheus and /alertmanager are the platform's.
 route:
   enabled: true
-  path: /faulty-app
+  path: /
   service: faulty-app
 
 # One service. An application is a set of independently-deployable services;

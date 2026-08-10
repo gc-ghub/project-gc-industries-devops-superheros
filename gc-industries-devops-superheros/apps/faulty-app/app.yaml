@@ -7,7 +7,7 @@ mesh:
     enabled: true
 route:
     enabled: true
-    path: /faulty-app
+    path: /
     service: faulty-app
     port: 8080
     gateway: istio-system/endurance-gateway
